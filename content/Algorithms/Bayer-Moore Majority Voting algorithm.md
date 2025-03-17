@@ -1,5 +1,7 @@
 ---
 title: Bayer-Moore Majority Voting algorithm
+tags:
+    - array
 ---
 
 **Time complexity:** `O(n)` <br/>
