@@ -9,5 +9,5 @@ As a DevOps engineer I'm comfortable with a wide range of languages and technolo
 
 I'm deeply curious, and passionate about learning and growing. I'm currently working on learning type with the Colemak-DH layout, learning Korean (while also building an app to help me and others learn), and learning more about the internals of the web and the tools I use every day. I love to read, and most days after work you'll find me going out for a run before relaxing with my wife.
 
-If you want to get in touch, please do contact me at [karlsen.jon@icloud.com](mailto:karlsen.jon@icloud.com)! You can also find me on [GitHub](https://github.com/jon-karlsen) and [LinkedIn](https://www.linkedin.com/in/jon-karlsen/).
+If you want to get in touch, please do contact me at [main (at) jon-karlsen (dot) dev](mailto:main@jon-karlsen.dev)! You can also find me on [GitHub](https://github.com/jon-karlsen) and [LinkedIn](https://www.linkedin.com/in/jon-karlsen/).
 ```

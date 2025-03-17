@@ -2,6 +2,7 @@
 title: Two-Pointer
 tags:
     - patterns
+    - array
     - two-pointer
 ---
 

@@ -7,7 +7,7 @@ tags:
 **Time complexity:** `O(n)` <br/>
 **Memory complexity:** `O(1)`
 
-An efficient way to find the _majority element_ in an [[Array]]. A majority element is an element that appears `> n/2` times in an array of size `n`.
+An efficient way to find the _majority element_ in an [[array]]. A majority element is an element that appears `> n/2` times in an array of size `n`.
 
 ## Steps
 1. Initialization:

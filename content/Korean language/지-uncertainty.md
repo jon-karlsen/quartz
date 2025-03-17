@@ -7,7 +7,7 @@ tags:
 
 ## Summary
 
-**~지** is a [[dependent noun]] that is placed at the end of a clause to indicate that the clause is contains an element of uncertainty, question, and/or guess. 
+**~지** is a [[dependent-noun]] that is placed at the end of a clause to indicate that the clause is contains an element of uncertainty, question, and/or guess. 
 
 ## Usage
 **~지** is commonly used together with question words like 누구, 뭐, 언제, 어디, 왜, etc.:
