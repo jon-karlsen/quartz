@@ -5,18 +5,36 @@ tags:
     - array
 ---
 
-An _array_ is a linear data structure that stores elements of the same type in contiguous memory locations. Each element is accessed using an _index_, typically starting from `0`.
+An _array_ is a linear data structure that stores elements of the same type in contiguous memory locations. It is generally allocated upfront and limited to its allocated capacity. Each element is accessed using an _index_, typically starting from `0`.
 
-## Advantages
+Since each element's location in memory in known, read and write operations are `O(1)`. Removal, insertion, and searching operation can be `O(n)`. 
 
-1. `(O(1))` access to elements using an index.
-2. **Memory Efficiency** – No extra overhead per element (unlike linked lists).
-3. **Cache-Friendly** – Stored in contiguous memory, making CPU cache access faster.
-4. **Easy Sorting & Searching** – Works well with algorithms like binary search `(O(log n))` if sorted.
+| | Avg. & Worst |
+| --- | --- |
+| Space | `O(1)` |
+| Index | `O(1)` |
+| Search | `O(n)` |
+| Append | `O(1)` |
+| Insert | `O(n)` |
+| Delete | `O(n)` |
 
-## Disadvantages
+## When to use?
+- need data in an ordered list
+- need fast indexing
+- limitations on memory
 
-1. **Fixed Size** – Requires pre-allocation or resizing (costly in dynamic arrays).
-2. **Expensive Insertions & Deletions** – Adding/removing elements (except at the end) requires shifting `(O(n))`.
-3. **Inefficient for Dynamic Operations** – Linked lists are better for frequent inserts/deletes.
-4. **Wasted Space (in Dynamic Arrays)** – Dynamic arrays often allocate extra memory for resizing.
+## When to avoid?
+- need to efficiently search for unsorted items
+- frequently need to insert and/or remove items
+
+## Common operations
+- Insert
+- Remove
+- Update
+- Find
+- Iterate
+- Copy (entire or part)
+- Sort
+- Reverse
+- Swap two items
+- Filter
