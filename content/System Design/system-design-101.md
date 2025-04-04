@@ -1,8 +1,8 @@
 ---
 title: System Design 101
 tags:
-	- system-design
-	- basics
+    - system-design
+    - basics
 ---
 
 ## Challenges
