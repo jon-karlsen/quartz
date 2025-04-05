@@ -1,5 +1,5 @@
 ---
-title: System Design 101
+title: System Design Basics
 tags:
     - system-design
     - basics
