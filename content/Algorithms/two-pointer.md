@@ -7,13 +7,14 @@ tags:
 ---
 
 ## What
-Use two pointers to traverse the data structure. The pointers can move toward each other, or in the same direction. This pattern simplifies many problems that require searching, comparing, or processing pairs of elements by reducing redundant operations, often resulting in an `O(n)` solution.
+_Two pointers_ is a technique that uses two pointers to traverse an iterable data structure. The pointers can move toward each other, or in the same direction. This technique simplifies many problems that require searching, comparing, or processing pairs of elements by reducing redundant operations, often resulting in an `O(n)` solution. The two pointers technique also includes [[sliding-window]].
 
 ## When
 - problem involves already sorted data, especially in [[array]] or string form
 - problem requires finding or comparing pairs of elements
-- problem requires computing a result based on interactions between two sections of ata
+- problem requires computing a result based on interactions between two sections of array
 - problem requires an efficient, often `O(n)` solution
+- problem involves detecting a cycle in a [[linked list]]
 
 ## Why
 Avoids nested iteration by moving pointers independently.
@@ -53,4 +54,32 @@ for j in range(1, len(nums)):
         i += 1
         nums[i] = nums[j]
 print(i + 1)
+```
+
+```python
+"""
+Find middle of a linked list.
+
+Input: `0 1 2 3 4`
+
+Output: `2`
+
+If the number of nodes is even, then return the second middle node.
+
+Input: `0 1 2 3 4 5`
+
+Output: `3`
+"""
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+def find_middle(head: Node) -> int:
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow.val
+
 ```
