@@ -7,14 +7,14 @@ tags:
 ---
 
 ## What
-_Two pointers_ is a technique that uses two pointers to traverse an iterable data structure. The pointers can move toward each other, or in the same direction. This technique simplifies many problems that require searching, comparing, or processing pairs of elements by reducing redundant operations, often resulting in an `O(n)` solution. The two pointers technique also includes [[sliding-window]].
+_Two pointers_ is a technique that uses two pointers to traverse an iterable data structure. The pointers can move toward each other, or in the same direction. This technique simplifies many problems that require searching, comparing, or processing pairs of elements by reducing redundant operations, often resulting in an `O(n)` solution. The two pointers technique also includes [[sliding window]].
 
 ## When
 - problem involves already sorted data, especially in [[array]] or string form
 - problem requires finding or comparing pairs of elements
 - problem requires computing a result based on interactions between two sections of array
 - problem requires an efficient, often `O(n)` solution
-- problem involves detecting a cycle in a [[linked list]]
+- problem involves detecting a cycle in a [[linked list]] ([[#Linked List Cycle]])
 
 ## Why
 Avoids nested iteration by moving pointers independently.
@@ -82,4 +82,39 @@ def find_middle(head: Node) -> int:
         fast = fast.next.next
     return slow.val
 
+```
+
+## Linked List Cycle
+Given a linked list with potentially a loop, determine whether the linked list from the first node contains a cycle. Bonus points for a constant-space solution.
+
+### Parameters
+
+- `nodes`: The first node of a linked list with potentially a loop.
+
+### Result
+
+- Whether there is a loop contained in the linked list.
+
+### Implementation
+
+```python
+"""
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+
+def safe_next(head: Node) -> Node:
+    return head.next or head
+
+def contains_cycle(head: Node) -> bool:
+    slow = safe_next(head)
+    fast = safe_next(safe_next(head))
+
+    while slow != fast and fast.next is not None:
+        slow = safe_next(slow)
+        fast = safe_next(safe_next(fast))
+
+    return fast.next is not None
 ```

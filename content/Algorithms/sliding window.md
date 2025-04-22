@@ -13,6 +13,11 @@ tags:
 ## What
 Examine a sequence of elements that form contiguous subsets. The window can grow, shrink, or remain constant in size, depending on the problem. Rather than recalculating a subdivision for each step, update the window as required.
 
+### vs. Prefix Sum
+Both sliding window and [[prefix sum]] solve problems related to sub-arrays, but they have different use cases:
+- **prefix sum** is ideal for quick range sum queries on static arrays
+- **sliding window** is better for problems involving continuous sub-arrays with specific conditions or sizes
+
 ## When
 - problem involves working with contiguous elements
 - problem involves subarrays or substrings
@@ -49,7 +54,7 @@ for right in range(len(s)):
     max_len = max(max_len, right - left + 1)
 ```
 
-## Fixed Sliding Window
+## Fixed-Size Sliding Window
 ```python
 def fixed_sliding_window(input, win_size):
     ans = window = input[0:window_size]
@@ -139,3 +144,57 @@ def anagram_indexes(original: str, check: str) -> List[int]:
 
     return res
 ```
+
+## Flexibly-Sized Sliding Window (Longest)
+Instead of the largest sum among all subarrays of fixed size `k`, we want to find the length of the _longest_ subarray with `<= target`.
+
+Given input `nums = [1, 6, 3, 1, 2, 4, 5]` and `target = 10`, then the longest subarray that does not exceed 10 is `[3, 1, 2, 4]`, so the output is `4` (length of `[3, 1, 2, 4]`).
+
+### Implementation
+```python
+def subarray_sum_longest(nums: List[int], target: int) -> int:
+    longest, win, left = 0, 0, 0
+
+    for right in range(len(nums)):
+        win += nums[right]
+        while win > target: # while window is INVALID
+            win -= nums[left]
+            left += 1
+        longest = max(longest, right - left + 1)
+
+    return longest
+```
+
+### Analysis
+The predicate function within the loop is _naturally satisfied_ even before we start processing the array. Growing the window could break this validity--if so, we must shrink the window until it returns to a valid state. That is, any window will be in a valid state both when the outer loop starts and when it terminates. This invariant property allows the update of `longest` at the end of each iteration.
+
+tl; dr to find the longest sub-array, move `left` as little as possible.
+
+## Flexibly-Sized Sliding Window (Shortest)
+Given a positive integer array `nums`, find the length of the _shortest_ subarray such that the subarray sum is at least `target`. For input `nums = [1, 4, 1, 7, 3, 0, 2, 5]` and `target = 10`, the smallest window with the `sum >= 10` is `[7, 3]` with length `2`. 
+
+Assume for this problem that it's guaranteed `target` will not exceed the sum of all elements in `nums`.
+
+### Implementation
+```python
+def shortest_subarr_sum(nums: List[int], target: int) -> int:
+    shortest = len(nums)+1
+    win, left = 0, 0
+
+    for right in range(len(nums)):
+        win += nums[right]
+        while win <= target: # while window is VALID
+            shortest = min(shortest, right - left + 1)
+            win -= nums[left]
+            left =+ 1
+
+    if shortest > len(nums): # no valid subarray was found
+        return 0
+        
+    return shortest
+```
+
+### Analysis
+In contrast to [[#Flexibly-Sized Sliding Window (Longest)]], the initial state is _naturally invalid_ (the starting `win` is not equal to or greater than `target`).
+
+tl; dr to find the shortest sub-array, move `left` as far as possible. Because an empty array is invalid, `left` will never reach or pass `right`.
